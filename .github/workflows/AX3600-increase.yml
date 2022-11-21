@@ -12,11 +12,11 @@ env:
   REPO_URL: https://github.com/dimfishr/openwrt
   REPO_BRANCH: ipq807x-5.15-pr-increase
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: AX3600-openclash.config
+  CONFIG_FILE: AX3600-increase.config
   SETUP_SH: setup.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  TZ: Asia/Jakarta
+  TZ: Europe/Berlin
 
 jobs:
   build:
@@ -125,17 +125,17 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-passwall+openclash" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-increase" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "OpenWrt Xiaomi AX3600：" >> release.txt
-        echo "IP:192.168.1.1" >> release.txt
-        echo "User：root" >> release.txt
-        echo "Pass ：<notset>" >> release.txt
-        echo "Source：https://github.com/robimarko/openwrt" >> release.txt
-        echo "Kernel：5.15" >> release.txt
+        echo "OpenWrt for Xiaomi AX3600" >> release.txt
+        echo "IP: 192.168.1.1" >> release.txt
+        echo "User: root" >> release.txt
+        echo "Pass: <notset>" >> release.txt
+        echo "Source: https://github.com/dimfishr/openwrt" >> release.txt
+        echo "Kernel: 5.15" >> release.txt
         echo "" >> release.txt
-        echo "Wifi enable by default" >> release.txt
-        echo "Pass wifi：20HAA0BL1BJ" >> release.txt
+        echo "WiFi" >> release.txt
+        echo "Password: 20HAA0BL1BJ" >> release.txt
         echo "${{ env.useVersionInfo }}" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
