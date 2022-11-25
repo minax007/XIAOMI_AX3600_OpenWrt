@@ -13,7 +13,7 @@ env:
   REPO_BRANCH: ipq807x-5.15-pr-increase
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: AX3600-increase.config
-#  SETUP_SH: setup.sh
+  SETUP_SH: setup.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Europe/Berlin
@@ -45,9 +45,9 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-#    - name: Load custom feeds
-#      run: |
-#        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
 #        cd openwrt
 #        echo 'src-git haibo https://github.com/haiibo/openwrt-packages' feeds.conf.default
 
@@ -57,13 +57,13 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-#    - name: Load custom configuration
-#      run: |
-#        [ -e files ] && mv files openwrt/files
-#        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-#        chmod +x $SETUP_SH
-#        cd openwrt
-#        $GITHUB_WORKSPACE/$SETUP_SH
+    - name: Load custom configuration
+      run: |
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $SETUP_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$SETUP_SH
 
     - name: Download package
       id: package
