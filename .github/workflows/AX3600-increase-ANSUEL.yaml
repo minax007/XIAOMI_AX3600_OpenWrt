@@ -124,13 +124,13 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-increase" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")-increase-ANSUEL" >> $GITHUB_OUTPUT
         touch release.txt
         echo "OpenWrt for Xiaomi AX3600" >> release.txt
         echo "IP: 192.168.1.1" >> release.txt
         echo "User: root" >> release.txt
         echo "Pass: <notset>" >> release.txt
-        echo "Source: https://github.com/dimfishr/openwrt" >> release.txt
+        echo "Source: https://github.com/ansuel/openwrt" >> release.txt
         echo "Kernel: 5.15" >> release.txt
         echo "" >> release.txt
         echo "${{ env.useVersionInfo }}" >> release.txt
