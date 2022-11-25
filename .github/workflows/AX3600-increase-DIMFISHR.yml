@@ -1,4 +1,4 @@
-name: Build AX3600 Increase
+name: Build AX3600 Increase (DIMFISHR)
 on:
   repository_dispatch:
   workflow_dispatch:
